@@ -163,6 +163,53 @@ function initPage() {
     window.requestIdleCallback?.(() => {
         navLinks.forEach((link) => prefetchPage(new URL(link.href, window.location.href)));
     });
+
+    initShowcaseSlider();
+}
+
+function initShowcaseSlider() {
+    const slider = document.querySelector('[data-showcase-slider]');
+
+    if (!slider || slider.dataset.sliderReady === 'true') {
+        return;
+    }
+
+    const track = slider.querySelector('[data-showcase-track]');
+    const slides = track ? [...track.children] : [];
+    const previousButton = slider.querySelector('[data-showcase-prev]');
+    const nextButton = slider.querySelector('[data-showcase-next]');
+    const dots = [...slider.querySelectorAll('[data-showcase-dot]')];
+    let activeIndex = 0;
+
+    if (!track || slides.length === 0) {
+        return;
+    }
+
+    slider.dataset.sliderReady = 'true';
+
+    const render = () => {
+        track.style.transform = `translateX(-${activeIndex * 100}%)`;
+
+        dots.forEach((dot, index) => {
+            const isActive = index === activeIndex;
+            dot.classList.toggle('w-8', isActive);
+            dot.classList.toggle('bg-slate-950', isActive);
+            dot.classList.toggle('bg-slate-300', !isActive);
+        });
+    };
+
+    const goTo = (index) => {
+        activeIndex = (index + slides.length) % slides.length;
+        render();
+    };
+
+    previousButton?.addEventListener('click', () => goTo(activeIndex - 1));
+    nextButton?.addEventListener('click', () => goTo(activeIndex + 1));
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goTo(index));
+    });
+
+    render();
 }
 
 window.addEventListener('popstate', () => {
