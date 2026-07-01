@@ -7,6 +7,9 @@
 
         <title>@yield('title', 'Pinjam Ruang ITATS')</title>
 
+        <link rel="icon" type="image/png" href="{{ asset('images/Logo.png') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/Logo.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/Logo.png') }}">
         <link rel="preconnect" href="https://fonts.bunny.net">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

@@ -10,8 +10,8 @@
 <header class="sticky top-0 z-50 border-b border-slate-950/10 bg-white/95">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8" aria-label="Navigasi utama">
         <a href="{{ route('home') }}" class="flex items-center gap-3">
-            <span class="grid h-11 w-11 place-items-center overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-slate-950/10">
-                <img src="{{ asset('images/Logo.png') }}" alt="Logo Pinjam Ruang ITATS" class="h-full w-full object-contain p-1">
+            <span class="grid h-12 w-12 place-items-center overflow-hidden">
+                <img src="{{ asset('images/logo-transparan.png') }}" alt="Logo Pinjam Ruang ITATS" class="h-full w-full object-contain">
             </span>
             <span>
                 <span class="block text-base font-black leading-tight text-slate-950">Pinjam Ruang</span>
